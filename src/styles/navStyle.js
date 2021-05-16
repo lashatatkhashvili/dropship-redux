@@ -55,7 +55,7 @@ const Header = styled.header`
     justify-content: center;
   }
 
-  li:hover .nav-svg {
+  .link:hover .nav-svg {
     fill: #61d5df;
   }
 
@@ -88,13 +88,13 @@ const Header = styled.header`
   }
 
   @media (max-width: 1070px) {
+    display: ${({ isVisible }) => (isVisible ? "flex" : "none")};
     position: absolute;
     top: 0;
     left: 0;
     z-index: 1;
     width: 100%;
     height: 100%;
-
     background-color: rgba(0, 0, 0, 0.5);
 
     nav {
@@ -107,8 +107,13 @@ const Header = styled.header`
       border: 1px solid #dde3ee;
       background-color: #fff;
       height: 100vh;
+
       transform: translateX(100%);
       transition-duration: 0.5s;
+    }
+
+    .anim {
+      transform: translateX(0%);
     }
 
     ul {

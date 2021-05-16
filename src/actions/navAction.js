@@ -3,3 +3,9 @@ export const navAction = () => {
     type: "SHOW_NAV",
   };
 };
+
+export const navAnim = () => {
+  return {
+    type: "ANIM",
+  };
+};
