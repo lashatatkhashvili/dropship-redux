@@ -29,7 +29,8 @@ const Header = styled.header`
     width: 100%;
     padding: 0 7px;
   }
-  .navigation {
+
+  .list-wrapper {
     width: 100%;
     padding-top: 30px;
     overflow: auto;
@@ -132,6 +133,7 @@ const Header = styled.header`
     .logo {
       width: 60px;
       height: 30px;
+      padding: 0;
     }
 
     .nav-border {
@@ -149,6 +151,7 @@ const Header = styled.header`
       margin-left: -20px;
       color: #677791;
       font-size: 13px;
+      text-transform: capitalize;
       font-family: Gilroy-med;
     }
 
