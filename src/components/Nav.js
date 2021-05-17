@@ -17,7 +17,6 @@ import {
 export default function Nav() {
   const { isVisible, anim } = useSelector((state) => state.nav);
   const dispatch = useDispatch();
-  const pathName = window.location.pathname;
 
   const toggleNav = () => {
     dispatch(navAnim());
@@ -26,6 +25,9 @@ export default function Nav() {
       dispatch(navAction());
     }, 300);
   };
+
+  const highLited = (slug) =>
+    window.location.pathname === `/${slug}` ? " #61d5df" : "#49547d";
 
   return (
     <Header isVisible={isVisible} onClick={toggleNav}>
@@ -47,39 +49,31 @@ export default function Nav() {
             </NavItem>
 
             <NavItem slug="dashboard" toggleNav={toggleNav}>
-              <Dashboard
-                fill={pathName === "/dashboard" ? " #61d5df" : "#49547d"}
-              />
+              <Dashboard fill={highLited("dashboard")} />
             </NavItem>
 
             <NavItem slug="catalog" toggleNav={toggleNav}>
-              <Catalog
-                stroke={pathName === "/catalog" ? " #61d5df" : "#49547d"}
-              />
+              <Catalog stroke={highLited("catalog")} />
             </NavItem>
 
             <NavItem slug="inventory" toggleNav={toggleNav}>
-              <Inventory
-                fill={pathName === "/inventory" ? " #61d5df" : "#49547d"}
-              />
+              <Inventory fill={highLited("inventory")} />
             </NavItem>
 
             <NavItem slug="cart" toggleNav={toggleNav}>
-              <Cart fill={pathName === "/cart" ? " #61d5df" : "#49547d"} />
+              <Cart fill={highLited("cart")} />
             </NavItem>
 
             <NavItem slug="orders" toggleNav={toggleNav}>
-              <Orders fill={pathName === "/orders" ? " #61d5df" : "#49547d"} />
+              <Orders fill={highLited("orders")} />
             </NavItem>
 
             <NavItem slug="transactions" toggleNav={toggleNav}>
-              <Transactions
-                fill={pathName === "/transactions" ? " #61d5df" : "#49547d"}
-              />
+              <Transactions fill={highLited("transactions")} />
             </NavItem>
 
             <NavItem slug="store" toggleNav={toggleNav}>
-              <Store fill={pathName === "/store" ? " #61d5df" : "#49547d"} />
+              <Store fill={highLited("store")} />
             </NavItem>
           </ul>
         </div>

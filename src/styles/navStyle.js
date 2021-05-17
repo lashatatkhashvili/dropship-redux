@@ -81,6 +81,7 @@ const Header = styled.header`
 
   .nav-border {
     border-left: 3px solid #61d5df;
+    padding-right: 3px;
   }
 
   p,
@@ -171,6 +172,10 @@ const Header = styled.header`
 
     .link {
       width: auto;
+    }
+
+    .nav-border {
+      padding-right: 0;
     }
 
     .nav-close {
