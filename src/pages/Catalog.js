@@ -4,6 +4,7 @@ import Nav from "../components/Nav";
 import CatalogNav from "../components/CatalogNav";
 import ContentHeader from "../components/ContentHeader";
 import Products from "../components/Products";
+import ProductDetails from "../components/ProductDetails";
 
 const StyledCatalog = styled.div`
   display: flex;
@@ -30,7 +31,7 @@ const StyledCatalog = styled.div`
   }
 `;
 
-export default function Catalog() {
+export default function Catalog(props) {
   return (
     <StyledCatalog>
       <Nav />
@@ -42,6 +43,7 @@ export default function Catalog() {
             <Products />
           </section>
         </div>
+        <ProductDetails props={props} />
       </main>
     </StyledCatalog>
   );

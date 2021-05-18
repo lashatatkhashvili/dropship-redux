@@ -1,19 +1,22 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts, select } from "../actions/productsAction";
+import { getProducts, select, productModal } from "../actions/productsAction";
+import Loading from "./Loading";
 import { Div, Product, Select } from "../styles/productsStyle";
 import BlueButton from "../styles/blueButton";
 
 export default function Products() {
   const data = useSelector((state) => state.productsData.products);
+  const loading = useSelector((state) => state.productsData.isLoading);
   const dispatch = useDispatch();
 
   const selectProduct = (i) => {
     dispatch(select(i));
   };
 
-  const productDetails = () => {
-    console.log("details");
+  const productDetails = (id) => {
+    window.history.pushState(null, "New Page Title", `catalog?product=${id}`);
+    dispatch(productModal(id));
   };
 
   const stopProp = (e) => {
@@ -22,19 +25,19 @@ export default function Products() {
 
   useEffect(() => {
     dispatch(getProducts());
-    // eslint-disable-next-line
-  }, []);
+  }, [dispatch]);
 
   return (
     <Div>
       <div className="products">
+        {loading && <Loading quantity={20} />}
         {data &&
           data.map((item, i) => {
             return (
               <Product
                 key={item.id}
                 selected={item.selected}
-                onClick={productDetails}
+                onClick={() => productDetails(item.id)}
               >
                 <Select selected={item.selected} className="product-select">
                   <div className="round" onClick={stopProp}>

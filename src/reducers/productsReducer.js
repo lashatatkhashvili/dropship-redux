@@ -4,6 +4,7 @@ const initState = {
   products: [],
   sortedProducts: [],
   isLoading: true,
+  productModal: 0,
 };
 
 const productsReducer = (state = initState, action) => {
@@ -12,7 +13,6 @@ const productsReducer = (state = initState, action) => {
       return { ...state, products: action.payload.products, isLoading: false };
     case "LOADING_DETAIL":
       return { ...state, isLoading: true };
-
     case "SELECT": {
       return update(state, {
         products: {
@@ -21,6 +21,13 @@ const productsReducer = (state = initState, action) => {
               $apply: (select) => !select,
             },
           },
+        },
+      });
+    }
+    case "PRODUCT_MODAL": {
+      return update(state, {
+        productModal: {
+          $set: action.payload.value,
         },
       });
     }

@@ -23,3 +23,12 @@ export const select = (index) => {
     },
   };
 };
+
+export const productModal = (value) => {
+  return {
+    type: "PRODUCT_MODAL",
+    payload: {
+      value,
+    },
+  };
+};
