@@ -1,26 +1,18 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts, select, productModal } from "../actions/productsAction";
+import { getProducts, productModal } from "../actions/productsAction";
 import Loading from "./Loading";
-import { Div, Product, Select } from "../styles/productsStyle";
-import BlueButton from "../styles/blueButton";
+import ProductSelect from "./ProductSelect";
+import { Div, Product } from "../styles/productsStyle";
 
 export default function Products() {
   const data = useSelector((state) => state.productsData.products);
   const loading = useSelector((state) => state.productsData.isLoading);
   const dispatch = useDispatch();
 
-  const selectProduct = (i) => {
-    dispatch(select(i));
-  };
-
   const productDetails = (id) => {
     window.history.pushState(null, "New Page Title", `catalog?product=${id}`);
     dispatch(productModal(id));
-  };
-
-  const stopProp = (e) => {
-    e.stopPropagation();
   };
 
   useEffect(() => {
@@ -39,27 +31,7 @@ export default function Products() {
                 selected={item.selected}
                 onClick={() => productDetails(item.id)}
               >
-                <Select selected={item.selected} className="product-select">
-                  <div className="round" onClick={stopProp}>
-                    <input
-                      type="checkbox"
-                      id={item.id}
-                      className="product__check"
-                      onChange={() => selectProduct(i)}
-                      checked={item.selected === true}
-                    />
-                    <label htmlFor={item.id}></label>
-                  </div>
-
-                  <BlueButton
-                    fontSize="14px"
-                    visible={!item.selected}
-                    className="btn"
-                    onClick={stopProp}
-                  >
-                    Add To Inventory
-                  </BlueButton>
-                </Select>
+                <ProductSelect id={item.id} selected={item.selected} i={i} />
 
                 <div className="product-image">
                   <img
