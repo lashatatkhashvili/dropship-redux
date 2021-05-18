@@ -14,3 +14,12 @@ export const getProducts = (sort) => async (dispatch) => {
     },
   });
 };
+
+export const select = (index) => {
+  return {
+    type: "SELECT",
+    payload: {
+      index,
+    },
+  };
+};
