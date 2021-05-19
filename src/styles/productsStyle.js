@@ -109,6 +109,14 @@ export const Product = styled.div`
   @media (max-width: 680px) {
     width: calc(100% - 40px);
   }
+
+  @media (max-width: 499px) {
+    .products {
+      padding: 0;
+      margin-top: 20px;
+      justify-content: center;
+    }
+  }
 `;
 
 export const Select = styled.div`

@@ -1,21 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { productModal } from "../actions/productsAction";
-import styled from "styled-components";
-
-const Div = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  display: ${({ modal }) => (modal ? "flex" : "none")};
-  justify-content: center;
-  align-items: center;
-  overflow: auto;
-  background-color: rgba(0, 14, 70, 0.7);
-`;
+import BlueButton from "../styles/blueButton";
+import { Div } from "../styles/productDetails";
 
 export default function ProductDetails({ props }) {
   const [product, setProduct] = useState([]);
@@ -37,16 +24,58 @@ export default function ProductDetails({ props }) {
     setProduct(prod);
   }, [modal, props, products, id]);
 
+  const closeModal = () => {
+    dispatch(productModal(0));
+    window.history.pushState(null, "New Page Title", "/catalog");
+  };
+
+  const stopProp = (e) => {
+    e.stopPropagation();
+  };
+
   return (
-    <Div modal={modal}>
-      <button
-        onClick={() => {
-          dispatch(productModal(0));
-          window.history.pushState(null, "New Page Title", "/catalog");
-        }}
-      >
-        AIT
-      </button>
+    <Div modal={modal} onClick={closeModal}>
+      {product && (
+        <div className="product-wrapper" onClick={stopProp}>
+          <span className="close-modal" onClick={closeModal}>
+            &times;
+          </span>
+
+          <div className="content">
+            <div className="content-left">
+              <div className="prices">
+                <p>RRP: $6</p>
+                <p>Profit: 25% / $2</p>
+                <p>Cost: ${product.price}</p>
+              </div>
+
+              <div>
+                <img src={product.image} alt="product big" className="img" />
+                <img
+                  src={product.image}
+                  alt="product small"
+                  className="small-img"
+                />
+              </div>
+            </div>
+
+            <div className="content-right">
+              <h2 className="single-product__title">{product.title}</h2>
+              <BlueButton
+                width="272px"
+                height="43px"
+                fontSize="16px"
+                visible
+                className="btn"
+              >
+                ADD TO MY INVENTORY
+              </BlueButton>
+              <h3>Product Details</h3>
+              <p className="paragraph"> {product.description}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </Div>
   );
 }

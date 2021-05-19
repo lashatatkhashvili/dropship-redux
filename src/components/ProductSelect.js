@@ -15,6 +15,7 @@ export default function ProductSelect({ selected, id, i }) {
   const selectProduct = (i) => {
     dispatch(select(i));
   };
+
   return (
     <Select selected={selected} className="product-select">
       <div className="round" onClick={stopProp}>

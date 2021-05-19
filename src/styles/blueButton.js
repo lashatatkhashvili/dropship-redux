@@ -16,7 +16,7 @@ const BlueButton = styled.button`
   font-style: normal;
   line-height: normal;
   letter-spacing: normal;
-  text-align: right;
+  text-align: center;
   color: #fff;
   padding: 0 14px;
   outline: 0;
