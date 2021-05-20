@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import SelectedItems from "./SelectedItems";
+import SelecteProducts from "./SelectedProducts";
 
 const Div = styled.div`
   height: 125px;
@@ -23,7 +23,7 @@ export default function ContentHeader() {
   return (
     <Div>
       <header className="header">
-        <SelectedItems />
+        <SelecteProducts />
       </header>
     </Div>
   );

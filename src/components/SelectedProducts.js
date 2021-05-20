@@ -6,7 +6,7 @@ import BlueButton from "../styles/blueButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFilter, faCheck } from "@fortawesome/free-solid-svg-icons";
 
-export default function SelectedItems() {
+export default function SelectedProducts() {
   const { products } = useSelector((state) => state.productsData);
 
   const dispatch = useDispatch();
