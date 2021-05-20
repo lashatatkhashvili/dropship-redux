@@ -24,6 +24,15 @@ export const select = (index) => {
   };
 };
 
+export const selectControl = (value) => {
+  return {
+    type: "SELECT_CONTROL",
+    payload: {
+      value,
+    },
+  };
+};
+
 export const productModal = (value) => {
   return {
     type: "PRODUCT_MODAL",

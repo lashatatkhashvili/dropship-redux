@@ -24,6 +24,15 @@ const productsReducer = (state = initState, action) => {
         },
       });
     }
+    case "SELECT_CONTROL": {
+      return {
+        ...state,
+        products: state.products.map((product) => ({
+          ...product,
+          selected: action.payload.value === "selectAll" ? true : false,
+        })),
+      };
+    }
     case "PRODUCT_MODAL": {
       return update(state, {
         productModal: {

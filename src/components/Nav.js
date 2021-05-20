@@ -16,6 +16,9 @@ import {
 
 export default function Nav() {
   const { isVisible, anim } = useSelector((state) => state.nav);
+  const highLited = (slug) =>
+    window.location.pathname === `/${slug}` ? " #61d5df" : "#49547d";
+
   const dispatch = useDispatch();
 
   const toggleNav = () => {
@@ -26,12 +29,13 @@ export default function Nav() {
     }, 300);
   };
 
-  const highLited = (slug) =>
-    window.location.pathname === `/${slug}` ? " #61d5df" : "#49547d";
+  const stopProp = (e) => {
+    e.stopPropagation();
+  };
 
   return (
     <Header isVisible={isVisible} onClick={toggleNav}>
-      <nav className={anim ? "anim" : ""} onClick={(e) => e.stopPropagation()}>
+      <nav className={anim ? "anim" : ""} onClick={stopProp}>
         <h1>
           <img src="./assets/logo.png" alt="logo" className="logo" />
           <span onClick={toggleNav}>

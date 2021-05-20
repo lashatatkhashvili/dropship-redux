@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 export default function NavItem({ slug, toggleNav, children }) {
@@ -13,3 +14,9 @@ export default function NavItem({ slug, toggleNav, children }) {
     </li>
   );
 }
+
+NavItem.propTypes = {
+  slug: PropTypes.string,
+  toggleNav: PropTypes.func,
+  children: PropTypes.node,
+};
