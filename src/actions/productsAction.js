@@ -6,11 +6,35 @@ export const getProducts = (sort) => async (dispatch) => {
   });
 
   const productsData = await productsReq(sort);
+  const searchedProducts = productsData.data.filter(
+    (item) => item.title.toUpperCase().indexOf(sort) !== -1
+  );
+
+  dispatch({
+    type: "SEARCH_PRODUCTS",
+    payload: {
+      products: searchedProducts,
+    },
+  });
 
   dispatch({
     type: "FETCH_PRODUCTS",
     payload: {
       products: productsData.data,
+    },
+  });
+};
+
+export const searchProducts = (value) => async (dispatch) => {
+  const productsData = await productsReq();
+  const searchedProducts = productsData.data.filter(
+    (item) => item.title.toUpperCase().indexOf(value) !== -1
+  );
+
+  dispatch({
+    type: "SEARCH_PRODUCTS",
+    payload: {
+      products: searchedProducts,
     },
   });
 };

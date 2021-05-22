@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import SelecteProducts from "./SelectedProducts";
+import SelectedProducts from "./SelectedProducts";
+import ProductSearch from "./ProductSearch";
 
 const Div = styled.div`
   height: 125px;
@@ -17,13 +18,24 @@ const Div = styled.div`
     padding-left: 50px;
     padding-right: 75px;
   }
+
+  .wrapper {
+    display: flex;
+    flex: 2;
+    justify-content: flex-end;
+    align-items: center;
+    padding-left: 10px;
+  }
 `;
 
 export default function ContentHeader() {
   return (
     <Div>
       <header className="header">
-        <SelecteProducts />
+        <SelectedProducts />
+        <div className="wrapper">
+          <ProductSearch />
+        </div>
       </header>
     </Div>
   );

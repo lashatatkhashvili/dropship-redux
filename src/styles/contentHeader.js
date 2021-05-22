@@ -85,3 +85,46 @@ export const Selected = styled.div`
     }
   }
 `;
+
+export const Search = styled.div`
+  position: relative;
+  height: 40px;
+  width: 100%;
+  max-width: 480px;
+`;
+
+export const Input = styled.input`
+  width: 100%;
+  height: 40px;
+  border-radius: 8px;
+  font-size: 15px;
+  outline: 0;
+  color: #29304b;
+  padding: 0 16px;
+  background-color: #fff;
+  border: 1px solid rgba(95, 102, 115, 0.1);
+
+  @media (max-width: 750px) {
+    display: ${(props) => (props.visible ? "none" : "inline")};
+  }
+`;
+
+export const SearchBtn = styled.button`
+  display: ${(props) => (props.visible ? "flex" : "none")};
+  width: 48px;
+  border: none;
+  background-color: transparent;
+  align-items: center;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: none;
+  background: 0 0;
+  outline: 0;
+  cursor: pointer;
+  padding: 10px 15px 9px;
+  color: rgb(213, 211, 211);
+  font-size: 20px;
+  transform: scaleX(-1);
+`;
