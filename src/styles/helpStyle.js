@@ -50,7 +50,7 @@ export const Info = styled.div`
     box-shadow: rgb(0 0 0 / 30%) -1px 0 3px;
   }
 
-  main {
+  .help-main {
     flex: 2 73%;
     background-color: #fff;
     overflow-y: auto;

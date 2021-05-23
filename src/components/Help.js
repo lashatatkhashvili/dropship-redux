@@ -44,7 +44,7 @@ export default function Help() {
             ))}
           </ul>
         </nav>
-        <main>
+        <main className="help-main">
           <h2>{heading}</h2>
           <p>{paragraph}</p>
           <video controls loop width="100%" key={`/assets/${video}.mp4`}>

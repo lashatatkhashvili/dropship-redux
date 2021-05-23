@@ -6,16 +6,9 @@ export const getProducts = (sort) => async (dispatch) => {
   });
 
   const productsData = await productsReq(sort);
-  const searchedProducts = productsData.data.filter(
-    (item) => item.title.toUpperCase().indexOf(sort) !== -1
-  );
 
-  dispatch({
-    type: "SEARCH_PRODUCTS",
-    payload: {
-      products: searchedProducts,
-    },
-  });
+  sort === "asc" && productsData.data.sort((a, b) => b.price - a.price);
+  sort === "desc" && productsData.data.sort((a, b) => a.price - b.price);
 
   dispatch({
     type: "FETCH_PRODUCTS",
