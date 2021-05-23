@@ -91,6 +91,12 @@ export const Search = styled.div`
   height: 40px;
   width: 100%;
   max-width: 480px;
+
+  @media (min-width: 750px) {
+    .close {
+      display: none;
+    }
+  }
 `;
 
 export const Input = styled.input`
@@ -110,7 +116,6 @@ export const Input = styled.input`
 `;
 
 export const SearchBtn = styled.button`
-  display: ${(props) => (props.visible ? "flex" : "none")};
   width: 48px;
   border: none;
   background-color: transparent;
@@ -127,4 +132,8 @@ export const SearchBtn = styled.button`
   color: rgb(213, 211, 211);
   font-size: 20px;
   transform: scaleX(-1);
+
+  @media (max-width: 750px) {
+    display: ${(props) => (props.visible ? "flex" : "none")};
+  }
 `;

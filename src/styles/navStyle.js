@@ -109,7 +109,6 @@ const Header = styled.header`
       border: 1px solid #dde3ee;
       background-color: #fff;
       height: 100vh;
-
       transform: translateX(100%);
       transition-duration: 0.5s;
     }

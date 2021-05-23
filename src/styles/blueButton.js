@@ -19,6 +19,7 @@ const BlueButton = styled.button`
   text-align: center;
   color: #fff;
   padding: 0 14px;
+  margin: ${(props) => props.margin};
   outline: 0;
   cursor: pointer;
 `;
