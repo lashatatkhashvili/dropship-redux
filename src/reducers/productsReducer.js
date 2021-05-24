@@ -2,7 +2,6 @@ import update from "immutability-helper";
 
 const initState = {
   products: [],
-  sortedProducts: [],
   isLoading: true,
   productModal: 0,
 };

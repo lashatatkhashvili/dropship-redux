@@ -14,7 +14,7 @@ const Header = styled.header`
     padding-top: 28px;
     border: 1px solid #dde3ee;
     background-color: #fff;
-    height: 100vh;
+    height: 100%;
     border-top: 0;
     border-left: 0;
   }

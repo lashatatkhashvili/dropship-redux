@@ -62,6 +62,17 @@ export const Div = styled.div`
       display: inline;
     }
   }
+
+  @media (max-width: 499px) {
+    .header {
+      padding: 10px;
+      justify-content: space-between;
+    }
+
+    .add {
+      margin: 0;
+    }
+  }
 `;
 
 export const Selected = styled.div`

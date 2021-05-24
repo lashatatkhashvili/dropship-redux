@@ -14,6 +14,14 @@ export const Div = styled.div`
     overflow: auto;
     width: 100%;
   }
+
+  @media (max-width: 499px) {
+    .products {
+      padding: 0;
+      margin-top: 20px;
+      justify-content: center;
+    }
+  }
 `;
 
 export const Product = styled.div`
