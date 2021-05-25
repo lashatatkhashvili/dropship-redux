@@ -9,6 +9,18 @@ export const getProducts = (sort) => async (dispatch) => {
 
   sort === "asc" && productsData.data.sort((a, b) => b.price - a.price);
   sort === "desc" && productsData.data.sort((a, b) => a.price - b.price);
+  sort === "az" &&
+    productsData.data.sort((a, b) => (a.title > b.title ? 1 : -1));
+  sort === "za" &&
+    productsData.data.sort((a, b) => (a.title > b.title ? -1 : 1));
+  sort &&
+    sort.value &&
+    (productsData.data = productsData.data.filter((item) =>
+      sort.type === "$"
+        ? item.price >= sort.value[0] && item.price <= sort.value[1]
+        : Math.round(item.price / 8) >= sort.value[0] &&
+          Math.round(item.price / 8) <= sort.value[1]
+    ));
 
   dispatch({
     type: "FETCH_PRODUCTS",

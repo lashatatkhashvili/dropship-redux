@@ -4,6 +4,12 @@ export const navAction = () => {
   };
 };
 
+export const catalogNavAction = () => {
+  return {
+    type: "SHOW_CATALOG_NAV",
+  };
+};
+
 export const navAnim = () => {
   return {
     type: "ANIM",

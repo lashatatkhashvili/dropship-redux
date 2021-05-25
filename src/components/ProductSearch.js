@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { searchProducts } from "../actions/productsAction";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,6 +7,7 @@ import { Search, Input, SearchBtn } from "../styles/contentHeader";
 import BlueButton from "../styles/blueButton";
 
 export default function CatalogSearch() {
+  const [query, setQuery] = useState("");
   const [search, setSearch] = useState(true);
 
   const dispatch = useDispatch();
@@ -16,10 +17,18 @@ export default function CatalogSearch() {
   };
 
   const searchProd = (e) => {
-    setTimeout(() => {
-      dispatch(searchProducts(e.target.value.toUpperCase()));
-    }, 1500);
+    setQuery(e.target.value);
   };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      dispatch(searchProducts(query.toUpperCase()));
+    }, 1000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [query, dispatch]);
 
   return (
     <>
@@ -27,6 +36,7 @@ export default function CatalogSearch() {
         <Input
           type="text"
           search={search}
+          value={query}
           placeholder="search..."
           visible={search}
           onChange={searchProd}

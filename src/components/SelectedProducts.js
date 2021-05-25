@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectControl } from "../actions/productsAction";
+import { catalogNavAction } from "../actions/navAction";
 import { Selected } from "../styles/contentHeader";
 import BlueButton from "../styles/blueButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -21,9 +22,19 @@ export default function SelectedProducts() {
     selected.length === products.length && dispatch(selectControl());
   };
 
+  const showCatalogNav = () => {
+    dispatch(catalogNavAction());
+  };
+
   return (
     <Selected>
-      <BlueButton height="32px" fontSize="12px" visible className="filter">
+      <BlueButton
+        height="32px"
+        fontSize="12px"
+        visible
+        className="filter"
+        onClick={showCatalogNav}
+      >
         <span className="filter-text">Filter</span>
         <span className="filter-icon">
           <FontAwesomeIcon icon={faFilter} />

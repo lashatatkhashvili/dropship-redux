@@ -23,6 +23,8 @@ export default function ProductsSort() {
         <option value="">New Arrivals</option>
         <option value="asc">Price: High To Low</option>
         <option value="desc">Price: Low To High</option>
+        <option value="az">Alphabet: A to Z</option>
+        <option value="za">Alphabet: Z to A</option>
       </select>
     </Sort>
   );
