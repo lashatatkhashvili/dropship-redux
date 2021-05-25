@@ -218,9 +218,7 @@ export const Sort = styled.div`
   height: 47px;
   padding: 0 50px;
   display: flex;
-  -webkit-box-align: center;
   align-items: center;
-  -webkit-box-pack: start;
   justify-content: flex-start;
   background-color: #fff;
   font-family: "Open Sans";
@@ -231,6 +229,12 @@ export const Sort = styled.div`
   letter-spacing: normal;
   text-align: right;
   color: #a8a4a4;
+
+  label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   span {
     margin-right: 4px;

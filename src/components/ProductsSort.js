@@ -2,8 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { getProducts } from "../actions/productsAction";
 import { Sort } from "../styles/contentHeader";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { BiMenuAltLeft } from "react-icons/bi";
 
 export default function ProductsSort() {
   const dispatch = useDispatch();
@@ -14,8 +13,7 @@ export default function ProductsSort() {
     <Sort>
       <label>
         <span>
-          {" "}
-          <FontAwesomeIcon icon={faBars} />
+          <BiMenuAltLeft size={20} />
         </span>
         Sort By:
       </label>
