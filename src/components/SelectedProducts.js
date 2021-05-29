@@ -55,7 +55,7 @@ export default function SelectedProducts() {
         <span className="number">
           selected <span id="count">{selected.length}</span> out of
         </span>
-        <span className="products"> 274,290 products</span>
+        <span className="products"> {products.length} products</span>
       </span>
 
       <BlueButton

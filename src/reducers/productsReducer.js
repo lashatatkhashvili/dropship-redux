@@ -4,6 +4,7 @@ import { sortProducts, filterProducts } from "../helper";
 const initState = {
   products: [],
   sortedProducts: [],
+  searchedProducts: [],
   isLoading: true,
   productModal: 0,
 };
@@ -19,18 +20,22 @@ const productsReducer = (state = initState, action) => {
       };
 
     case "SEARCH_PRODUCTS":
+      const filtered = [...state.sortedProducts].filter(
+        (item) => item.title.toUpperCase().indexOf(action.payload.value) !== -1
+      );
       return {
         ...state,
-        products: [...state.sortedProducts].filter(
-          (item) =>
-            item.title.toUpperCase().indexOf(action.payload.value) !== -1
-        ),
+        products: filtered,
+        searchedProducts: filtered,
       };
 
     case "SORT_PRODUCTS":
       return {
         ...state,
         products: sortProducts(action.payload.sort, [...state.products]),
+        searchedProducts: sortProducts(action.payload.sort, [
+          ...state.products,
+        ]),
         sortedProducts: sortProducts(action.payload.sort, [
           ...state.sortedProducts,
         ]),
@@ -39,9 +44,11 @@ const productsReducer = (state = initState, action) => {
     case "FILTER_PRODUCTS":
       return {
         ...state,
-        products: filterProducts(action.payload.filter, [
-          ...state.sortedProducts,
-        ]),
+        products: filterProducts(
+          action.payload.filter,
+          [...state.sortedProducts],
+          [...state.searchedProducts]
+        ),
       };
 
     case "LOADING_DETAIL":

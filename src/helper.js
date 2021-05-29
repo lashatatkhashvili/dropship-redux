@@ -7,15 +7,17 @@ export const sortProducts = (sort, data) => {
   return data;
 };
 
-export const filterProducts = (filter, data) => {
+export const filterProducts = (filter, data, searched) => {
+  const products = searched.length > 0 ? searched : data;
   filter &&
     filter.value &&
-    (data = data.filter((item) =>
+    (data = products.filter((item) =>
       filter.type === "$"
         ? item.price >= filter.value[0] && item.price <= filter.value[1]
         : Math.round(item.price / 8) >= filter.value[0] &&
           Math.round(item.price / 8) <= filter.value[1]
     ));
 
+  if (!filter) return searched;
   return data;
 };
