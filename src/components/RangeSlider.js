@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getProducts } from "../actions/productsAction";
+import { filterProducts } from "../actions/productsAction";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Slider from "@material-ui/core/Slider";
@@ -54,7 +54,7 @@ export default function RangeSlider({ name, min, max, type, reset }) {
   const dispatch = useDispatch();
 
   const filter = () => {
-    dispatch(getProducts({ value, type }));
+    dispatch(filterProducts({ value, type }));
   };
 
   const handleChange = (event, newValue) => {
@@ -63,7 +63,7 @@ export default function RangeSlider({ name, min, max, type, reset }) {
 
   useEffect(() => {
     setValue([min, max]);
-    dispatch(getProducts());
+    dispatch(filterProducts());
   }, [reset, min, max, dispatch]);
 
   return (

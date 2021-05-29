@@ -7,41 +7,40 @@ export const getProducts = (sort) => async (dispatch) => {
 
   const productsData = await productsReq(sort);
 
-  sort === "asc" && productsData.data.sort((a, b) => b.price - a.price);
-  sort === "desc" && productsData.data.sort((a, b) => a.price - b.price);
-  sort === "az" &&
-    productsData.data.sort((a, b) => (a.title > b.title ? 1 : -1));
-  sort === "za" &&
-    productsData.data.sort((a, b) => (a.title > b.title ? -1 : 1));
-  sort &&
-    sort.value &&
-    (productsData.data = productsData.data.filter((item) =>
-      sort.type === "$"
-        ? item.price >= sort.value[0] && item.price <= sort.value[1]
-        : Math.round(item.price / 8) >= sort.value[0] &&
-          Math.round(item.price / 8) <= sort.value[1]
-    ));
-
   dispatch({
     type: "FETCH_PRODUCTS",
     payload: {
       products: productsData.data,
+      sorted: productsData.data,
     },
   });
 };
 
-export const searchProducts = (value) => async (dispatch) => {
-  const productsData = await productsReq();
-  const searchedProducts = productsData.data.filter(
-    (item) => item.title.toUpperCase().indexOf(value) !== -1
-  );
+export const sortProducts = (sort) => {
+  return {
+    type: "SORT_PRODUCTS",
+    payload: {
+      sort,
+    },
+  };
+};
 
-  dispatch({
+export const filterProducts = (filter) => {
+  return {
+    type: "FILTER_PRODUCTS",
+    payload: {
+      filter,
+    },
+  };
+};
+
+export const searchProducts = (value) => {
+  return {
     type: "SEARCH_PRODUCTS",
     payload: {
-      products: searchedProducts,
+      value,
     },
-  });
+  };
 };
 
 export const select = (index) => {

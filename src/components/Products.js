@@ -6,7 +6,7 @@ import ProductSelect from "./ProductSelect";
 import { Div, Product } from "../styles/productsStyle";
 
 export default function Products() {
-  const data = useSelector((state) => state.productsData.products);
+  const products = useSelector((state) => state.productsData.products);
   const loading = useSelector((state) => state.productsData.isLoading);
   const dispatch = useDispatch();
 
@@ -23,8 +23,8 @@ export default function Products() {
     <Div>
       <div className="products">
         {loading && <Loading quantity={20} />}
-        {data &&
-          data.map((item, i) => {
+        {products &&
+          products.map((item, i) => {
             return (
               <Product
                 key={item.id}

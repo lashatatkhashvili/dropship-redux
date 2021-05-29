@@ -1,13 +1,13 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { getProducts } from "../actions/productsAction";
+import { sortProducts } from "../actions/productsAction";
 import { Sort } from "../styles/contentHeader";
 import { BiMenuAltLeft } from "react-icons/bi";
 
 export default function ProductsSort() {
   const dispatch = useDispatch();
   const sortProd = (e) => {
-    dispatch(getProducts(e.target.value));
+    dispatch(sortProducts(e.target.value));
   };
   return (
     <Sort>

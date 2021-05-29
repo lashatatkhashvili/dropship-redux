@@ -1,7 +1,9 @@
 import update from "immutability-helper";
+import { sortProducts, filterProducts } from "../helper";
 
 const initState = {
   products: [],
+  sortedProducts: [],
   isLoading: true,
   productModal: 0,
 };
@@ -9,11 +11,42 @@ const initState = {
 const productsReducer = (state = initState, action) => {
   switch (action.type) {
     case "FETCH_PRODUCTS":
-      return { ...state, products: action.payload.products, isLoading: false };
+      return {
+        ...state,
+        products: action.payload.products,
+        sortedProducts: action.payload.sorted,
+        isLoading: false,
+      };
+
     case "SEARCH_PRODUCTS":
-      return { ...state, products: action.payload.products };
+      return {
+        ...state,
+        products: [...state.sortedProducts].filter(
+          (item) =>
+            item.title.toUpperCase().indexOf(action.payload.value) !== -1
+        ),
+      };
+
+    case "SORT_PRODUCTS":
+      return {
+        ...state,
+        products: sortProducts(action.payload.sort, [...state.products]),
+        sortedProducts: sortProducts(action.payload.sort, [
+          ...state.sortedProducts,
+        ]),
+      };
+
+    case "FILTER_PRODUCTS":
+      return {
+        ...state,
+        products: filterProducts(action.payload.filter, [
+          ...state.sortedProducts,
+        ]),
+      };
+
     case "LOADING_DETAIL":
       return { ...state, isLoading: true };
+
     case "SELECT": {
       return update(state, {
         products: {
@@ -25,6 +58,7 @@ const productsReducer = (state = initState, action) => {
         },
       });
     }
+
     case "SELECT_CONTROL": {
       return {
         ...state,
@@ -34,6 +68,7 @@ const productsReducer = (state = initState, action) => {
         })),
       };
     }
+
     case "PRODUCT_MODAL": {
       return update(state, {
         productModal: {
@@ -48,12 +83,3 @@ const productsReducer = (state = initState, action) => {
 };
 
 export default productsReducer;
-
-// case "SELECT": {
-//   const arr = [...state.products];
-//   arr[action.payload.index].selected = true;
-//   return {
-//     ...state,
-//     products: arr,
-//   };
-// }
