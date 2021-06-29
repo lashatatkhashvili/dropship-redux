@@ -1,17 +1,18 @@
-import productsReq from "../API";
+import Api from "../API";
 
 export const getProducts = (sort) => async (dispatch) => {
   dispatch({
     type: "LOADING_DETAIL",
   });
 
-  const productsData = await productsReq(sort);
+  const productApi = Api("api/v1/products");
+  const products = await productApi.get();
 
   dispatch({
     type: "FETCH_PRODUCTS",
     payload: {
-      products: productsData.data,
-      sorted: productsData.data,
+      products: products.data.data,
+      sorted: products.data.data,
     },
   });
 };

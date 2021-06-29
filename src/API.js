@@ -1,8 +1,15 @@
 import axios from "axios";
 import SERVER_ADDRESS from "./Variables";
 
-const call = async (url) => await axios.get(SERVER_ADDRESS + url);
-const productsReq = async (sort = "asc") =>
-  await call(`products${`?sort=${sort}`}`);
+const token = localStorage.getItem("token");
 
-export default productsReq;
+const bearerToken = `Bearer ${token}`;
+
+const Api = (query) => {
+  return axios.create({
+    baseURL: `${SERVER_ADDRESS}/${query}`,
+    headers: { Authorization: bearerToken },
+  });
+};
+
+export default Api;

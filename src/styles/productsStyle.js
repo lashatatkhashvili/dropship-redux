@@ -25,7 +25,7 @@ export const Div = styled.div`
 `;
 
 export const Product = styled.div`
-  width: calc(100% / 5 - 20px);
+  width: calc(100% / 4 - 20px);
   margin: 0 10px 20px;
   display: inline-block;
   vertical-align: top;

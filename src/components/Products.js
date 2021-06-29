@@ -35,7 +35,7 @@ export default function Products() {
 
                 <div className="product-image">
                   <img
-                    src={item.image}
+                    src={item.imageUrl}
                     alt="product "
                     height="127"
                     width="191"

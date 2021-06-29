@@ -4,14 +4,14 @@ import { productModal } from "../actions/productsAction";
 import BlueButton from "../styles/blueButton";
 import { Div } from "../styles/productDetails";
 
-export default function ProductDetails({ props }) {
+export default function ProductDetails() {
   const [product, setProduct] = useState([]);
   const { productModal: modal, products } = useSelector(
     (state) => state.productsData
   );
 
   const dispatch = useDispatch();
-  const id = props.location.search.split("=")[1];
+  const id = window.location.href.split("=")[1];
 
   useEffect(() => {
     id ? dispatch(productModal(1)) : dispatch(productModal(0));
@@ -22,7 +22,7 @@ export default function ProductDetails({ props }) {
       ? products.find((item) => item.id === Number(id))
       : products.find((item) => item.id === Number(modal));
     setProduct(prod);
-  }, [modal, props, products, id]);
+  }, [modal, products, id]);
 
   const closeModal = () => {
     dispatch(productModal(0));
@@ -50,9 +50,9 @@ export default function ProductDetails({ props }) {
               </div>
 
               <div>
-                <img src={product.image} alt="product big" className="img" />
+                <img src={product.imageUrl} alt="product big" className="img" />
                 <img
-                  src={product.image}
+                  src={product.imageUrl}
                   alt="product small"
                   className="small-img"
                 />
