@@ -48,6 +48,12 @@ export const registerAction = (data) => async (dispatch) => {
   }
 };
 
+export const authFail = () => {
+  return {
+    type: "AUTH_FAIL",
+  };
+};
+
 export const tokenAction = (data) => {
   return {
     type: "TOKEN_DETAIL",

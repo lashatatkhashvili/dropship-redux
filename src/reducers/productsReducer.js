@@ -7,6 +7,7 @@ const initState = {
   searchedProducts: [],
   isLoading: true,
   productModal: 0,
+  errorMessage: "",
 };
 
 const productsReducer = (state = initState, action) => {

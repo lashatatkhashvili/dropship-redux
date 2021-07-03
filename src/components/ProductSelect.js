@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { select } from "../actions/productsAction";
+import { addToCart } from "../actions/cartAction";
 import BlueButton from "../styles/blueButton";
 import { Select } from "../styles/productsStyle";
 
@@ -10,6 +11,11 @@ export default function ProductSelect({ selected, id, i }) {
 
   const stopProp = (e) => {
     e.stopPropagation();
+  };
+
+  const add = (e) => {
+    e.stopPropagation();
+    dispatch(addToCart(id, 1));
   };
 
   const selectProduct = (i) => {
@@ -33,7 +39,7 @@ export default function ProductSelect({ selected, id, i }) {
         fontSize="14px"
         visible={!selected}
         className="btn"
-        onClick={stopProp}
+        onClick={add}
       >
         Add To Inventory
       </BlueButton>

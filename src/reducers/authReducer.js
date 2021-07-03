@@ -27,6 +27,12 @@ const authReducer = (state = initState, action) => {
         isLogged: false,
         errorMessage: "Wrong e-mail or password",
       };
+
+    case "AUTH_FAIL":
+      return {
+        ...state,
+        isLogged: false,
+      };
     case "LOGIN_DETAIL":
       return { ...state, isLogged: false };
 

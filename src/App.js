@@ -5,6 +5,7 @@ import { tokenAction } from "./actions/authAction";
 import { decodeToken } from "react-jwt";
 import Catalog from "./pages/Catalog";
 import Dashboard from "./pages/Dashboard";
+import Cart from "./pages/Cart";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 
@@ -34,6 +35,7 @@ function App() {
           </Route>
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/catalog" component={Catalog} />
+          <Route exact path="/cart" component={Cart} />
         </Switch>
       ) : (
         <Switch>

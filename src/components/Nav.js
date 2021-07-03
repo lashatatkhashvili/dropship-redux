@@ -44,7 +44,7 @@ export default function Nav() {
         </h1>
         <div className="list-wrapper">
           <ul>
-            <NavItem slug="profile" toggleNav={toggleNav}>
+            <NavItem slug="" toggleNav={toggleNav}>
               <img
                 src="./assets/profile.jpg"
                 alt="profile"
@@ -52,7 +52,7 @@ export default function Nav() {
               />
             </NavItem>
 
-            <NavItem slug="dashboard" toggleNav={toggleNav}>
+            <NavItem slug="" toggleNav={toggleNav}>
               <Dashboard fill={highLited("dashboard")} />
             </NavItem>
 
@@ -60,7 +60,7 @@ export default function Nav() {
               <Catalog stroke={highLited("catalog")} />
             </NavItem>
 
-            <NavItem slug="inventory" toggleNav={toggleNav}>
+            <NavItem slug="" toggleNav={toggleNav}>
               <Inventory fill={highLited("inventory")} />
             </NavItem>
 
@@ -68,15 +68,15 @@ export default function Nav() {
               <Cart fill={highLited("cart")} />
             </NavItem>
 
-            <NavItem slug="orders" toggleNav={toggleNav}>
+            <NavItem slug="" toggleNav={toggleNav}>
               <Orders fill={highLited("orders")} />
             </NavItem>
 
-            <NavItem slug="transactions" toggleNav={toggleNav}>
+            <NavItem slug="" toggleNav={toggleNav}>
               <Transactions fill={highLited("transactions")} />
             </NavItem>
 
-            <NavItem slug="store" toggleNav={toggleNav}>
+            <NavItem slug="" toggleNav={toggleNav}>
               <Store fill={highLited("store")} />
             </NavItem>
           </ul>

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts, productModal } from "../actions/productsAction";
+import { clearMessage } from "../actions/cartAction";
 import Loading from "./Loading";
 import ProductSelect from "./ProductSelect";
 import { Div, Product } from "../styles/productsStyle";
@@ -17,6 +18,7 @@ export default function Products() {
 
   useEffect(() => {
     dispatch(getProducts());
+    dispatch(clearMessage());
   }, [dispatch]);
 
   return (

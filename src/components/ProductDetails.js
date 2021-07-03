@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { productModal } from "../actions/productsAction";
+import { addToCart } from "../actions/cartAction";
 import BlueButton from "../styles/blueButton";
 import { Div } from "../styles/productDetails";
 
@@ -27,6 +28,10 @@ export default function ProductDetails() {
   const closeModal = () => {
     dispatch(productModal(0));
     window.history.pushState(null, "New Page Title", "/catalog");
+  };
+
+  const add = () => {
+    id && dispatch(addToCart(id, 1));
   };
 
   const stopProp = (e) => {
@@ -67,6 +72,7 @@ export default function ProductDetails() {
                 fontSize="16px"
                 visible
                 className="btn"
+                onClick={add}
               >
                 ADD TO MY INVENTORY
               </BlueButton>

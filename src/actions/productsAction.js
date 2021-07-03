@@ -1,6 +1,6 @@
 import Api from "../API";
 
-export const getProducts = (sort) => async (dispatch) => {
+export const getProducts = () => async (dispatch) => {
   dispatch({
     type: "LOADING_DETAIL",
   });
