@@ -1,5 +1,24 @@
 import Api from "../API";
 
+export const addProduct = (data) => async (dispatch) => {
+  try {
+    const productApi = Api("api/v1/products");
+    const product = await productApi.post("", {
+      ...data,
+    });
+    console.log(product);
+    alert("Successfully added");
+    dispatch({
+      type: "ADD_PRODUCT",
+    });
+  } catch (err) {
+    alert("Could not be added");
+    dispatch({
+      type: "ADD_FAIL",
+    });
+  }
+};
+
 export const getProducts = () => async (dispatch) => {
   dispatch({
     type: "LOADING_DETAIL",

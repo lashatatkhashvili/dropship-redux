@@ -32,3 +32,10 @@ export const loginValidation = yup.object({
     .min(4, "Password should be of minimum 4 characters length")
     .required("Password is required"),
 });
+
+export const addProductValidation = yup.object({
+  title: yup.string().required(),
+  description: yup.string().required(),
+  price: yup.number().required(),
+  imageUrl: yup.string().required(),
+});

@@ -68,8 +68,8 @@ export default function Nav() {
               <Cart fill={highLited("cart")} />
             </NavItem>
 
-            <NavItem slug="" toggleNav={toggleNav}>
-              <Orders fill={highLited("orders")} />
+            <NavItem slug="items" toggleNav={toggleNav}>
+              <Orders fill={highLited("items")} />
             </NavItem>
 
             <NavItem slug="" toggleNav={toggleNav}>

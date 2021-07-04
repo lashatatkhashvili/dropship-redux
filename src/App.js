@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import Cart from "./pages/Cart";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Items from "./pages/Items";
 
 function App() {
   const user = useSelector((state) => state.user);
@@ -36,6 +37,7 @@ function App() {
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/catalog" component={Catalog} />
           <Route exact path="/cart" component={Cart} />
+          <Route exact path="/items" component={Items} />
         </Switch>
       ) : (
         <Switch>
