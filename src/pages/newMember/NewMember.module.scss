@@ -1,0 +1,35 @@
+.newTenant {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .newTenantCard {
+    width: 752px;
+
+    .newTenantColumn {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+      margin-right: 50px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      .newTenantBuildingList {
+        height: 130px;
+      }
+
+      .newTenantSave {
+        align-self: flex-end;
+      }
+      .newTenantStatus {
+        //justify-content: space-between;
+        margin: 0;
+      }
+    }
+  }
+}
